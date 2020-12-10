@@ -1,0 +1,161 @@
+<html>
+    
+<head>
+    <title>Cu&aacute;nto falta para los 100k?</title>
+</head>
+
+<style>
+    body{
+        text-align: center;
+        
+        font-family: sans-serif;
+        font-weight: 100;
+    }
+
+h1{
+    color: #396;
+    font-weight: 100;
+    font-size: 20px;
+    margin: 40px 0px 20px;
+}
+
+#clockdiv{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+#clockdiv2{
+    font-family: sans-serif;
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
+}
+
+#clockdiv > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #00BF96;
+    display: inline-block;
+}
+#clockdiv2 > div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #00BF96;
+    display: inline-block;
+}
+
+#clockdiv div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+}
+#clockdiv2 div > span{
+    padding: 15px;
+    border-radius: 3px;
+    background: #00816A;
+    display: inline-block;
+}
+
+.smalltext{
+    padding-top: 5px;
+    font-size: 16px;
+}
+</style>
+
+<body>
+
+<h1>Cuánto falta para que me den mis 100k? (sólo si eres club 100k 2020)</h1>
+<div id="clockdiv">
+    <div>
+        <span class="days"></span>
+        <div class="smalltext">días</div>
+    </div>
+    <div>
+        <span class="hours"></span>
+        <div class="smalltext">horas</div>
+    </div>
+    <div>
+        <span class="minutes"></span>
+        <div class="smalltext">minutos</div>
+    </div>
+    <div>
+        <span class="seconds"></span>
+        <div class="smalltext">segundos</div>
+    </div>
+</div>
+<h1>Si no soy del club 100k 2020 (o sea, pobre) cuándo me dan mis 100k? </h1>
+<div id="clockdiv2">
+    <div>
+        <span class="days"></span>
+        <div class="smalltext">días</div>
+    </div>
+    <div>
+        <span class="hours"></span>
+        <div class="smalltext">horas</div>
+    </div>
+    <div>
+        <span class="minutes"></span>
+        <div class="smalltext">minutos</div>
+    </div>
+    <div>
+        <span class="seconds"></span>
+        <div class="smalltext">segundos</div>
+    </div>
+</div>
+
+</body>
+
+<script>
+    function getTimeRemaining(endtime) {
+        const total = Date.parse(endtime) - Date.parse(new Date());
+        const seconds = Math.floor((total / 1000) % 60);
+        const minutes = Math.floor((total / 1000 / 60) % 60);
+        const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+        const days = Math.floor(total / (1000 * 60 * 60 * 24));
+        
+        return {
+            total,
+            days,
+            hours,
+            minutes,
+            seconds
+        };
+    }
+
+function initializeClock(id, endtime) {
+    const clock = document.getElementById(id);
+    const daysSpan = clock.querySelector('.days');
+    const hoursSpan = clock.querySelector('.hours');
+    const minutesSpan = clock.querySelector('.minutes');
+    const secondsSpan = clock.querySelector('.seconds');
+    
+    function updateClock() {
+        const t = getTimeRemaining(endtime);
+        
+        daysSpan.innerHTML = t.days;
+        hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+        
+        if (t.total <= 0) {
+            clearInterval(timeinterval);
+        }
+    }
+    
+    updateClock();
+    const timeinterval = setInterval(updateClock, 1000);
+}
+
+const deadline = new Date(2020,11,15,0,0,0,0);
+initializeClock('clockdiv', deadline);
+const deadline2 = new Date(2021,11,15,0,0,0,0);
+initializeClock('clockdiv2', deadline2);
+</script>
+
+</html>
