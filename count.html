@@ -156,6 +156,15 @@ const deadline = new Date(2020,11,15,0,0,0,0);
 initializeClock('clockdiv', deadline);
 const deadline2 = new Date(2021,11,15,0,0,0,0);
 initializeClock('clockdiv2', deadline2);
+
+function checkDate(){
+    var today = new Date();
+    if(today.getDate()==15 && today.getFullYear()==2020 && today.getMonth()==11){
+        window.location.href = "celeb.html";
+    }
+}
+setInterval(checkDate, 500);
+
 </script>
 
 </html>
