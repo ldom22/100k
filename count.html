@@ -70,7 +70,7 @@ h1{
 
 <body>
 
-<h1>Cuánto falta para que me den mis 100k? (sólo si eres club 100k 2021)</h1>
+<h1>Cuánto falta para que me den mis 100k? (sólo si eres club 100k 2023)</h1>
 <div id="clockdiv">
     <div>
         <span class="days"></span>
@@ -89,7 +89,7 @@ h1{
         <div class="smalltext">segundos</div>
     </div>
 </div>
-<h1>Si no soy del club 100k 2021 (o sea, pobre) cuándo me dan mis 100k? </h1>
+<h1>Si no soy del club 100k 2023 (o sea, pobre) cuándo me dan mis 100k? </h1>
 <div id="clockdiv2">
     <div>
         <span class="days"></span>
@@ -152,14 +152,14 @@ function initializeClock(id, endtime) {
     const timeinterval = setInterval(updateClock, 1000);
 }
 
-const deadline = new Date(2021,11,15,0,0,0,0);
+const deadline = new Date(2023,11,15,0,0,0,0);
 initializeClock('clockdiv', deadline);
-const deadline2 = new Date(2022,11,15,0,0,0,0);
+const deadline2 = new Date(2024,11,15,0,0,0,0);
 initializeClock('clockdiv2', deadline2);
 
 function checkDate(){
     var today = new Date();
-    if(today.getDate()==15 && today.getFullYear()==2021 && today.getMonth()==11){
+    if(today.getDate()==15 && today.getFullYear()==2023 && today.getMonth()==11){
         window.location.href = "celeb.html";
     }
 }
